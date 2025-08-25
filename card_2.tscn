@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dykxjw10850vg"]
+
+[ext_resource type="Script" uid="uid://ckpita5eoavs6" path="res://card_2.gd" id="1_l64hy"]
+
+[node name="Card2" type="Area2D" groups=["CardBoyz"]]
+z_index = 1
+script = ExtResource("1_l64hy")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

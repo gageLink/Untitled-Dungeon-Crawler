@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwk26wwxjeuxv"]
+
+[ext_resource type="Script" uid="uid://dr7rmc1vcn28t" path="res://card.gd" id="1_rjlel"]
+
+[node name="Card" type="Area2D"]
+script = ExtResource("1_rjlel")
+
+[node name="Template" type="Sprite2D" parent="."]
+
+[node name="Item" type="Sprite2D" parent="Template"]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

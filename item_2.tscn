@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxrfmcndxv1pp"]
+
+[ext_resource type="Script" uid="uid://dhina4uheqdpu" path="res://item_2.gd" id="1_4r5cw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4r5cw"]
+
+[node name="Item" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_4r5cw")
+center_of_mass_mode = 1
+script = ExtResource("1_4r5cw")

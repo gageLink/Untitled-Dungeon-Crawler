@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmb8db5h2jfr"]
+
+[ext_resource type="Script" uid="uid://bv10elh2cw670" path="res://card_map.gd" id="1_aiym3"]
+[ext_resource type="PackedScene" uid="uid://dykxjw10850vg" path="res://card_2.tscn" id="2_aiym3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aiym3"]
+size = Vector2(1152, 648)
+
+[node name="CardMap" type="Area2D"]
+script = ExtResource("1_aiym3")
+card = ExtResource("2_aiym3")
+
+[node name="Area" type="CollisionShape2D" parent="."]
+modulate = Color(0.608951, 0.0732176, 0.541515, 1)
+position = Vector2(576, 324)
+shape = SubResource("RectangleShape2D_aiym3")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="draw" from="Area" to="." method="_on_area_draw"]

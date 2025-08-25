@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://btyn16vhh0w4g"]
+
+[ext_resource type="Script" uid="uid://d4h0wru6quwa6" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://d35cxl14tcv14" path="res://class.tscn" id="1_ig7tw"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_0xm2m")
+classroom = ExtResource("1_ig7tw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.021
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

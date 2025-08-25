@@ -1,0 +1,83 @@
+[gd_scene load_steps=16 format=3 uid="uid://0nydd6vr7ee6"]
+
+[ext_resource type="Texture2D" uid="uid://bi86ycd6cokkw" path="res://Art/ams/Arm1.png" id="1_5qy1j"]
+[ext_resource type="Script" uid="uid://be1pamanwkgjc" path="res://arm.gd" id="1_wbqlu"]
+[ext_resource type="Texture2D" uid="uid://c6j3g2kkn3rqq" path="res://Art/ams/Pick2PR.png" id="2_m8ymp"]
+[ext_resource type="Texture2D" uid="uid://b8f65pcjjsmv" path="res://Art/ams/Grab-1.png.png" id="2_uode6"]
+[ext_resource type="Texture2D" uid="uid://cv6sd4n0un7lm" path="res://Art/ams/Grab-2.png.png" id="3_e5ded"]
+[ext_resource type="Texture2D" uid="uid://bv1mnc5uw3n48" path="res://Art/ams/Grab-3.png.png" id="4_2qc1o"]
+[ext_resource type="Texture2D" uid="uid://vtmqefmd42k7" path="res://Art/ams/pick5.png" id="4_llypu"]
+[ext_resource type="Texture2D" uid="uid://c8spo0mdujc3j" path="res://Art/ams/pick3.png" id="4_s02i6"]
+[ext_resource type="Texture2D" uid="uid://wkguspgfuyr4" path="res://Art/ams/pick4.png" id="5_cl23y"]
+[ext_resource type="Texture2D" uid="uid://cje505paxo2c" path="res://Art/ams/Grab-4.png.png" id="5_uijo3"]
+[ext_resource type="Texture2D" uid="uid://rwncwkn6pmqg" path="res://Art/ams/Grab-5.png.png" id="6_12csc"]
+[ext_resource type="Texture2D" uid="uid://drtrglyb18jbr" path="res://Art/ams/Grab-6.png.png" id="7_vja8r"]
+[ext_resource type="Texture2D" uid="uid://0l7aenjlvha3" path="res://Art/ams/Grab-7.png.png" id="8_3tnyw"]
+[ext_resource type="Texture2D" uid="uid://bjt6yetixja8d" path="res://Art/ams/Grab-8.png.png" id="9_6nui2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qy1j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uode6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e5ded")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2qc1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uijo3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_12csc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vja8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3tnyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6nui2")
+}],
+"loop": true,
+"name": &"Holding",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5qy1j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_m8ymp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_llypu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s02i6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cl23y")
+}],
+"loop": true,
+"name": &"picker",
+"speed": 10.0
+}]
+
+[node name="Arm" type="Node2D"]
+scale = Vector2(0.53, 0.53)
+script = ExtResource("1_wbqlu")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(40, 120)
+sprite_frames = SubResource("SpriteFrames_5qy1j")
+animation = &"picker"
+
+[node name="Timer" type="Timer" parent="Sprite2D"]
+wait_time = 0.14
+autostart = true
+
+[connection signal="timeout" from="Sprite2D/Timer" to="." method="_on_timer_timeout"]

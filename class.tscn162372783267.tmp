@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://d35cxl14tcv14"]
+
+[ext_resource type="Script" uid="uid://u3s7knfd75xb" path="res://class.gd" id="1_u1e3p"]
+[ext_resource type="PackedScene" uid="uid://bxrfmcndxv1pp" path="res://item_2.tscn" id="2_aq02k"]
+[ext_resource type="PackedScene" uid="uid://dykxjw10850vg" path="res://card_2.tscn" id="3_hhwi1"]
+[ext_resource type="Texture2D" uid="uid://c5lvoy653pgd6" path="res://Art/Backgrounds/Class1PR.png" id="4_l04a5"]
+[ext_resource type="PackedScene" uid="uid://dic2hyppnm3rp" path="res://card_map_2.tscn" id="4_nujna"]
+[ext_resource type="PackedScene" uid="uid://cdirky0op5v7m" path="res://wall_scene.tscn" id="5_l04a5"]
+[ext_resource type="Texture2D" uid="uid://u5fdl7d7irb" path="res://Art/Backgrounds/DeskSide.png" id="6_aq02k"]
+[ext_resource type="Texture2D" uid="uid://d1auc2k23uki5" path="res://Art/Backgrounds/CardDesk.png" id="7_hhwi1"]
+[ext_resource type="PackedScene" uid="uid://0nydd6vr7ee6" path="res://arm.tscn" id="9_bbv7e"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_aq02k"]
+
+[node name="Class" type="Node2D"]
+script = ExtResource("1_u1e3p")
+item = ExtResource("2_aq02k")
+card = ExtResource("3_hhwi1")
+
+[node name="BG" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(560, 391)
+texture = ExtResource("4_l04a5")
+
+[node name="CardMap" parent="." instance=ExtResource("4_nujna")]
+position = Vector2(576, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="WallScene" parent="." instance=ExtResource("5_l04a5")]
+
+[node name="DeskSide" type="RigidBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_aq02k")
+freeze = true
+
+[node name="Side" type="Sprite2D" parent="DeskSide"]
+modulate = Color(0.664481, 0.663654, 0.648336, 1)
+z_index = -1
+position = Vector2(864, 639)
+scale = Vector2(1.152, 1.152)
+texture = ExtResource("6_aq02k")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeskSide"]
+position = Vector2(864, 639)
+scale = Vector2(1.152, 1.152)
+polygon = PackedVector2Array(-250, -7.5, -250, 7.5, 250, 7.5, 250, -7.5)
+
+[node name="SideTop" type="Sprite2D" parent="DeskSide"]
+light_mask = 2
+visibility_layer = 2
+z_index = -1
+position = Vector2(865, 616)
+scale = Vector2(1.152, 0.1215)
+texture = ExtResource("7_hhwi1")
+
+[node name="Arm" parent="." instance=ExtResource("9_bbv7e")]
+
+[connection signal="popitem" from="CardMap" to="." method="_on_card_map_2_popitem"]
