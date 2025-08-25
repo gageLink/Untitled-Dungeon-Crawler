@@ -10,11 +10,11 @@ var ct = 0.0
 func _input(event):
 	if mi:
 		if event.is_action_pressed("newclick"):
-			if Global.holding == null:
-				Global.holding = self
+			if glb.holding == null:
+				glb.holding = self
 				held = true
 	if event.is_action_released("newclick"):
-		if Global.holding == self:
+		if glb.holding == self:
 			var spd = Input.get_last_mouse_velocity()
 			linear_velocity = Vector2(clamp(spd.x,-1000,1000),clamp(spd.y,-1000,1000))
 			
@@ -49,5 +49,5 @@ func _process(delta: float) -> void:
 	
 
 func go(item):
-	ft = Global.addsprite(self,item,ft)
-	Global.addcollis(ft)
+	ft = glb.addsprite(self,item,ft)
+	glb.addcollis(ft)

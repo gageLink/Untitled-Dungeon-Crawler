@@ -1,19 +1,19 @@
 [gd_scene load_steps=16 format=3 uid="uid://0nydd6vr7ee6"]
 
-[ext_resource type="Texture2D" uid="uid://bi86ycd6cokkw" path="res://Art/ams/Arm1.png" id="1_5qy1j"]
 [ext_resource type="Script" uid="uid://be1pamanwkgjc" path="res://arm.gd" id="1_wbqlu"]
-[ext_resource type="Texture2D" uid="uid://c6j3g2kkn3rqq" path="res://Art/ams/Pick2PR.png" id="2_m8ymp"]
-[ext_resource type="Texture2D" uid="uid://b8f65pcjjsmv" path="res://Art/ams/Grab-1.png.png" id="2_uode6"]
-[ext_resource type="Texture2D" uid="uid://cv6sd4n0un7lm" path="res://Art/ams/Grab-2.png.png" id="3_e5ded"]
-[ext_resource type="Texture2D" uid="uid://bv1mnc5uw3n48" path="res://Art/ams/Grab-3.png.png" id="4_2qc1o"]
-[ext_resource type="Texture2D" uid="uid://vtmqefmd42k7" path="res://Art/ams/pick5.png" id="4_llypu"]
-[ext_resource type="Texture2D" uid="uid://c8spo0mdujc3j" path="res://Art/ams/pick3.png" id="4_s02i6"]
-[ext_resource type="Texture2D" uid="uid://wkguspgfuyr4" path="res://Art/ams/pick4.png" id="5_cl23y"]
-[ext_resource type="Texture2D" uid="uid://cje505paxo2c" path="res://Art/ams/Grab-4.png.png" id="5_uijo3"]
-[ext_resource type="Texture2D" uid="uid://rwncwkn6pmqg" path="res://Art/ams/Grab-5.png.png" id="6_12csc"]
-[ext_resource type="Texture2D" uid="uid://drtrglyb18jbr" path="res://Art/ams/Grab-6.png.png" id="7_vja8r"]
-[ext_resource type="Texture2D" uid="uid://0l7aenjlvha3" path="res://Art/ams/Grab-7.png.png" id="8_3tnyw"]
-[ext_resource type="Texture2D" uid="uid://bjt6yetixja8d" path="res://Art/ams/Grab-8.png.png" id="9_6nui2"]
+[ext_resource type="Texture2D" uid="uid://c3r3117r8e7mq" path="res://Art/Arms/Mouse Pointer/Grab-1.png.png" id="2_uode6"]
+[ext_resource type="Texture2D" uid="uid://2gtxgnh5tm2j" path="res://Art/Arms/Mouse Pointer/Grab-2.png.png" id="3_e5ded"]
+[ext_resource type="Texture2D" uid="uid://bdjfigabx2h5m" path="res://Art/Arms/Mouse Pointer/Grab-3.png.png" id="4_2qc1o"]
+[ext_resource type="Texture2D" uid="uid://c4v4ie1xmw3nm" path="res://Art/Arms/Mouse Pointer/Grab-4.png.png" id="5_uijo3"]
+[ext_resource type="Texture2D" uid="uid://bqef83jab4jac" path="res://Art/Arms/Mouse Pointer/Grab-5.png.png" id="6_12csc"]
+[ext_resource type="Texture2D" uid="uid://bqm2kdd2t3yo7" path="res://Art/Arms/Mouse Pointer/Grab-6.png.png" id="7_vja8r"]
+[ext_resource type="Texture2D" uid="uid://e0bwp4uuw40e" path="res://Art/Arms/Mouse Pointer/Grab-7.png.png" id="8_3tnyw"]
+[ext_resource type="Texture2D" uid="uid://ci6y4bx2hiivx" path="res://Art/Arms/Mouse Pointer/Grab-8.png.png" id="9_6nui2"]
+[ext_resource type="Texture2D" uid="uid://c5e51c478rgx" path="res://Art/Arms/Mouse Pointer/Arm1.png" id="10_u3up4"]
+[ext_resource type="Texture2D" uid="uid://2lvwjdwcefim" path="res://Art/Arms/Mouse Pointer/Pick2PR.png" id="11_br6sk"]
+[ext_resource type="Texture2D" uid="uid://th2b46i2cie6" path="res://Art/Arms/Mouse Pointer/pick5.png" id="12_8uj28"]
+[ext_resource type="Texture2D" uid="uid://cipg4dql3tnx3" path="res://Art/Arms/Mouse Pointer/pick3.png" id="13_bgp5n"]
+[ext_resource type="Texture2D" uid="uid://bekc5kgu4gqh7" path="res://Art/Arms/Mouse Pointer/pick4.png" id="14_i884o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5qy1j"]
 animations = [{
@@ -48,19 +48,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_5qy1j")
+"texture": ExtResource("10_u3up4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_m8ymp")
+"texture": ExtResource("11_br6sk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_llypu")
+"texture": ExtResource("12_8uj28")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_s02i6")
+"texture": ExtResource("13_bgp5n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_cl23y")
+"texture": ExtResource("14_i884o")
 }],
 "loop": true,
 "name": &"picker",
@@ -74,7 +74,7 @@ script = ExtResource("1_wbqlu")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(40, 120)
 sprite_frames = SubResource("SpriteFrames_5qy1j")
-animation = &"picker"
+animation = &"Holding"
 
 [node name="Timer" type="Timer" parent="Sprite2D"]
 wait_time = 0.14

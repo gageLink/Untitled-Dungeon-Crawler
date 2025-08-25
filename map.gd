@@ -9,7 +9,7 @@ var BI:= false#block input
 func _input(event: InputEvent) -> void:
 	if not BI:
 		BI = true
-		if event.is_action_pressed("1"):
+		if event.is_action_pressed("click"):
 			var g = false
 			while g == false:
 				reset()

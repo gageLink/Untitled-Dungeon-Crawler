@@ -68,7 +68,7 @@ func _on_hallway_halls(a) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("click"):
+	if event.is_action_pressed("newclick"):
 		if butt != null:
 			if not BI:
 				_on_hallway_halls(["0","0","0","0"])

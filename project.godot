@@ -18,6 +18,10 @@ config/icon="res://icon.svg"
 
 glb="*res://global.gd"
 
+[display]
+
+mouse_cursor/custom_image="uid://cfq2x6x1mmsqk"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
