@@ -5,11 +5,11 @@ extends Node2D
 
 func _ready() -> void:
 	for i in range(15):
-		additem(Global.pickitem())
+		additem(glb.pickitem())
 
 func _process(_delta: float) -> void:
 	queue_redraw()
-	if Global.holding == null:
+	if glb.holding == null:
 		$Arm/Sprite2D.animation = "picker"
 		$Arm/Sprite2D.z_index =2
 	else:
@@ -18,36 +18,36 @@ func _process(_delta: float) -> void:
 
 func _draw() -> void:
 	var at = $Arm/Sprite2D.sprite_frames.get_frame_texture($Arm/Sprite2D.animation,$Arm/Sprite2D.frame)
-	for c in Global.cards:
+	for c in glb.cards:
 		var sca = $CardMap.scale;var h=10
 		for f in c.ft:
 			var t = f.texture
 			sca*=f.scale
 			var wid = t.get_size() * sca
 			var aw = at.get_size()*.6
-			#draw_texture(t,Vector2(c.global_position.x,Global.sz.y))
+			#draw_texture(t,Vector2(c.global_position.x,glb.sz.y))
 			var ud = sin(c.ct*PI/100)*2
-			var pom=30-(c.sp.y/Global.sz.y)*30.0
-			if Global.holding == c:
-				if Global.HSCYP[2] < 28:
+			var pom=30-(c.sp.y/glb.sz.y)*30.0
+			if glb.holding == c:
+				if glb.HSCYP[2] < 28:
 					if c.ft[0]==f:
-						Global.HSCYP[2]+=1
-					var div = float(Global.HSCYP[2])/30.0
-					pom += ((Global.sz.y-c.global_position.y)/3)*div
+						glb.HSCYP[2]+=1
+					var div = float(glb.HSCYP[2])/30.0
+					pom += ((glb.sz.y-c.global_position.y)/3)*div
 				else:
-					pom += (Global.sz.y-c.global_position.y)/3
+					pom += (glb.sz.y-c.global_position.y)/3
 				if c.ft[0]==f:
-					draw_set_transform(Vector2(f.global_position.x-aw.x/2.0,Global.sz.y - 15.0+ud-pom),0)
+					draw_set_transform(Vector2(f.global_position.x-aw.x/2.0,glb.sz.y - 15.0+ud-pom),0)
 					draw_texture_rect(at,Rect2(Vector2(0.0,5.0),Vector2(aw.x,40)),false)
-			elif Global.HSCYP[1] == c:
-				if Global.HSCYP[2] < 28:
+			elif glb.HSCYP[1] == c:
+				if glb.HSCYP[2] < 28:
 					if c.ft[0]==f:
-						Global.HSCYP[2]+=1
-					var div = 1-(float(Global.HSCYP[2])/30.0)
-					pom += ((Global.sz.y-c.global_position.y)/3)*div
+						glb.HSCYP[2]+=1
+					var div = 1-(float(glb.HSCYP[2])/30.0)
+					pom += ((glb.sz.y-c.global_position.y)/3)*div
 				else:
-					Global.HSCYP[1] = null
-			draw_set_transform(Vector2(f.global_position.x-wid.x/2.0,Global.sz.y - 25.0+ud-pom),c.rotation/4)
+					glb.HSCYP[1] = null
+			draw_set_transform(Vector2(f.global_position.x-wid.x/2.0,glb.sz.y - 25.0+ud-pom),c.rotation/4)
 			draw_texture_rect(t,Rect2(Vector2(0.0,0.0),Vector2(wid.x,h)),false)
 			h-=1.0
 
@@ -56,17 +56,17 @@ func additem(thing):
 	new_item.position = Vector2( randi_range(0,get_viewport().size.x/2),randi_range(0,get_viewport().size.y/2))
 	new_item.rotation = randf_range(-2,2)
 	new_item.go(thing)
-	Global.items += 1
-	new_item.name = str(Global.items) + "Item"
+	glb.items += 1
+	new_item.name = str(glb.items) + "Item"
 	add_child(new_item)
 
 func _on_card_map_2_popitem(thing: Node, ft: Array):
 	var new_item = item.instantiate()
-	if Global.holding.name.contains("Card"):
-		new_item.global_position = Vector2(ft.duplicate(true)[0].global_position.x,Global.sz.y-((Global.sz.y-Global.holding.global_position.y)/3)-(30-(Global.holding.sp.y/Global.sz.y)*30.0)-50)
+	if glb.holding.name.contains("Card"):
+		new_item.global_position = Vector2(ft.duplicate(true)[0].global_position.x,glb.sz.y-((glb.sz.y-glb.holding.global_position.y)/3)-(30-(glb.holding.sp.y/glb.sz.y)*30.0)-50)
 	else:
 		if $CardMap.mi:
-			new_item.global_position = Vector2(ft.duplicate(true)[0].global_position.x,Global.sz.y-85.0)
+			new_item.global_position = Vector2(ft.duplicate(true)[0].global_position.x,glb.sz.y-85.0)
 		else:
 			new_item.global_position = get_global_mouse_position()
 	new_item.linear_velocity = Vector2(0.0,-600.0)+Input.get_last_mouse_velocity()
@@ -77,6 +77,6 @@ func _on_card_map_2_popitem(thing: Node, ft: Array):
 	new_item.ft.pop_front()
 	new_item.ft[0].position = Vector2.ZERO;new_item.ft[0].offset=Vector2.ZERO;
 	var size = new_item.ft[0].texture.get_size();new_item.ft[0].scale = Vector2(128.0/size.x,128.0/size.y)
-	Global.addcollis(new_item.ft)
-	Global.items+=1
-	new_item.name = str(Global.items)+"Item"
+	glb.addcollis(new_item.ft)
+	glb.items+=1
+	new_item.name = str(glb.items)+"Item"

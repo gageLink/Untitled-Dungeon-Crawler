@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	if visible:
-		if Global.holding != null:
+		if glb.holding != null:
 			var fs =$Sprite2D.sprite_frames.get_frame_count($Sprite2D.animation)
 			var nf = $Sprite2D.frame
 			while nf == $Sprite2D.frame:

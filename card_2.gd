@@ -9,14 +9,14 @@ func _process(delta: float) -> void:
 	move(delta)
 
 func go(item):
-	ft = Global.addsprite(self,item,ft).duplicate(true)
-	Global.addcollis(ft)
+	ft = glb.addsprite(self,item,ft).duplicate(true)
+	glb.addcollis(ft)
 
 func setitem(item):
 	if ft.size() > 1:
 		return
 	var n = get_child(0)
-	Global.addsprite(n,item,ft)
+	glb.addsprite(n,item,ft)
 
 
 func _on_mouse_entered():
@@ -28,36 +28,36 @@ func _on_mouse_exited():
 func move(delta):
 	self.position = lerp(self.position,sp,delta * 2)
 	var i = 0
-	match Global.DeckType:
+	match glb.DeckType:
 		"Branch":
-			if Global.holding == self:
+			if glb.holding == self:
 				var where = lerp(global_position,get_global_mouse_position(),delta*15)
-				global_position = Vector2(clamp(where.x,0,Global.sz.x), clamp(where.y,0,Global.sz.y))
-				for c in Global.cards:
+				global_position = Vector2(clamp(where.x,0,glb.sz.x), clamp(where.y,0,glb.sz.y))
+				for c in glb.cards:
 					var offset = position - sp
 					if c != self:
-						if leaves[Global.cards.find(c)].begins_with(leaves[Global.cards.find(self)])and c.ft.size()>1:
+						if leaves[glb.cards.find(c)].begins_with(leaves[glb.cards.find(self)])and c.ft.size()>1:
 							c.position = c.sp+offset
 			elif ft.size() < 2:
-				position.x = 5*Global.sz.x/6
+				position.x = 5*glb.sz.x/6
 			return
-	sp.x = clamp(sp.x,0.0,Global.sz.x)
-	sp.y = clamp(sp.y,0.0,Global.sz.y)
+	sp.x = clamp(sp.x,0.0,glb.sz.x)
+	sp.y = clamp(sp.y,0.0,glb.sz.y)
 	if sh:
 		position = lerp(position,sp,delta*2)
 		if (position-sp).length() < 1:
 			position = sp
 			sh = false
 	#follow mouse
-	if Global.holding == self:
+	if glb.holding == self:
 		var where = lerp(global_position,get_global_mouse_position(),delta*15)
-		global_position = Vector2(clamp(where.x,0,Global.sz.x), clamp(where.y,0,Global.sz.y))
+		global_position = Vector2(clamp(where.x,0,glb.sz.x), clamp(where.y,0,glb.sz.y))
 		self.global_position.y += sin(ct*PI/50.0)*10.0
 		self.global_rotation =  sin(ct*PI/50.0+PI/6)*2
 		
 	else:
 		self.position = lerp(self.position,sp,delta * 2)
-		for c in Global.cards:
+		for c in glb.cards:
 			if c != self:
 				if abs(sp - c.sp).length() < 100.0:
 					sp += Vector2(randf()-.5,randf()-.5)*10

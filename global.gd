@@ -9,7 +9,8 @@ var startcards: int = 15
 var holding
 var HSCYP = [null,null,null]#position, previous held card, frame counter
 var sz = Vector2(1152,648)
-
+#map stuff
+var map = [];var facing;var curr;var prev;var NodeCt = 3;var tilesize = 15;
 
 func addsprite(node, item, ft):
 	if item is String:
@@ -82,3 +83,9 @@ func pickitem() -> String:
 		if file.ends_with(".png"):
 			files.append(file.split(".")[0])
 	return files.pick_random()
+
+func readmap(node):#gets position of node
+	
+	var pos = Vector2.ZERO
+	pos = Vector2((node.position.x-5)/10,(node.position.y-5)/10)
+	return pos

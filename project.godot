@@ -16,8 +16,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-glb="*res://glb.gd"
-Global="*res://global.gd"
+glb="*res://global.gd"
 
 [editor]
 
