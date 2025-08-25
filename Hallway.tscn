@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dydnbrikjscok"]
+
+[ext_resource type="Script" uid="uid://c5ixdar26oqqn" path="res://hallway.gd" id="1_eparc"]
+[ext_resource type="Texture2D" uid="uid://dmud83jlyt1wr" path="res://Art/Hallways/Wall3/A0.png" id="2_3f1kj"]
+[ext_resource type="Texture2D" uid="uid://c1vm4cm71itbb" path="res://Art/Hallways/Wall3/B0.png" id="3_ogm5h"]
+[ext_resource type="Texture2D" uid="uid://ys3e60n55miq" path="res://Art/Hallways/LBump.png" id="4_2v7yy"]
+[ext_resource type="Texture2D" uid="uid://24av5q3fahe3" path="res://Art/Hallways/RBump.png" id="5_yxphv"]
+[ext_resource type="Texture2D" uid="uid://dgok85bfai6yv" path="res://Art/Hallways/Wall3/C0.png" id="6_birp0"]
+
+[node name="Hallway" type="Node2D"]
+script = ExtResource("1_eparc")
+
+[node name="A" type="Sprite2D" parent="."]
+position = Vector2(194, 324)
+scale = Vector2(1.201, 1.201)
+texture = ExtResource("2_3f1kj")
+
+[node name="B" type="Sprite2D" parent="."]
+position = Vector2(576, 326)
+scale = Vector2(1.201, 1.201)
+texture = ExtResource("3_ogm5h")
+metadata/_edit_group_ = true
+
+[node name="LBump" type="Sprite2D" parent="B"]
+scale = Vector2(2, 2)
+texture = ExtResource("4_2v7yy")
+metadata/_edit_group_ = true
+
+[node name="RBump" type="Sprite2D" parent="B"]
+scale = Vector2(2, 2)
+texture = ExtResource("5_yxphv")
+metadata/_edit_group_ = true
+
+[node name="C" type="Sprite2D" parent="."]
+position = Vector2(960, 326)
+scale = Vector2(1.201, 1.201)
+texture = ExtResource("6_birp0")

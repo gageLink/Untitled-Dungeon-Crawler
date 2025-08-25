@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://q1m1wti4magj"]
+
+[ext_resource type="Script" uid="uid://ce2t0t8108u2o" path="res://map.gd" id="1_gfjgm"]
+[ext_resource type="PackedScene" uid="uid://b5mv781b2y8oj" path="res://MapSquare.tscn" id="2_3vi7k"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_gfjgm")
+mapsquare = ExtResource("2_3vi7k")
+
+[node name="SpotTime" type="Timer" parent="."]
+autostart = true

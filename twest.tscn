@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://frw3e62blm0j"]
-
-[node name="Node2D" type="Node2D"]
-
-[node name="thit" type="Timer" parent="."]
-wait_time = 3.415
-
-[node name="falllllll" type="Sprite2D" parent="."]

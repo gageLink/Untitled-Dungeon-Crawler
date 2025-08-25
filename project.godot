@@ -14,6 +14,10 @@ config/name="Untitled Dungeon Crawler"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+glb="*res://glb.gd"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
