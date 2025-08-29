@@ -16,15 +16,15 @@ func _process(delta: float) -> void:
 				if scale.x < 1.5: #move forward
 					cnt +=1
 					var amt = Vector2.ONE*delta
-					amt *= sin(((scale.x-.9)/3)*PI/2)*3*(sin(cnt/3) +1)/2
-					position += Vector2(amt.x*-1150,amt.y*-640+sin(cnt/3)*7*scale.x/7)
+					amt *= sin(((scale.x-.9)/3.0)*PI/2.0)*3.0*(sin(cnt/3.0) +1.0)/2.0
+					position += Vector2(amt.x*-1150.0,amt.y*-640.0+sin(cnt/3.0)*7.0*scale.x/7.0)
 					scale +=2*amt
 					modulate.a-=amt.x
 				elif  scale.x < 3:#start heading left
 					cnt +=1
 					var amt = Vector2.ONE*delta
-					amt *= sin(((scale.x-.9)/3)*PI/2)*3*(sin(cnt/3) +1)/2
-					position += Vector2(amt.x*-0,amt.y*-640+sin(cnt/3)*7*scale.x/7)
+					amt *= sin(((scale.x-.9)/3.0)*PI/2.0)*3.0*(sin(cnt/3.0) +1.0)/2.0
+					position += Vector2(amt.x*-0,amt.y*-640.0+sin(cnt/3.0)*7.0*scale.x/7.0)
 					scale +=2*amt
 					modulate.a-=amt.x
 					pass
@@ -34,8 +34,8 @@ func _process(delta: float) -> void:
 				if scale.x < 3:
 					cnt +=1
 					var amt = Vector2.ONE*delta
-					amt *= sin(((scale.x-.9)/3)*PI/2)*3*(sin(cnt/3) +1)/2
-					position += Vector2(amt.x*-1150,amt.y*-640+sin(cnt/3)*7*scale.x/7)
+					amt *= sin(((scale.x-.9)/3.0)*PI/2.0)*3.0*(sin(cnt/3.0) +1.0)/2.0
+					position += Vector2(amt.x*-1150.0,amt.y*-640.0+sin(cnt/3.0)*7.0*scale.x/7.0)
 					scale +=2*amt
 					modulate.a-=amt.x
 				else: dt = 0
@@ -44,15 +44,15 @@ func _process(delta: float) -> void:
 				if scale.x < 1.5: #move forward
 					cnt +=1
 					var amt = Vector2.ONE*delta
-					amt *= sin(((scale.x-.9)/3)*PI/2)*3*(sin(cnt/3) +1)/2
-					position += Vector2(amt.x*-1150,amt.y*-640+sin(cnt/3)*7*scale.x/7)
+					amt *= sin(((scale.x-.9)/3.0)*PI/2.0)*3.0*(sin(cnt/3.0) +1.0)/2.0
+					position += Vector2(amt.x*-1150.0,amt.y*-640.0+sin(cnt/3.0)*7.0*scale.x/7.0)
 					scale +=2*amt
 					modulate.a-=amt.x
 				elif  scale.x < 3:#start heading right
 					cnt +=1
 					var amt = Vector2.ONE*delta
-					amt *= sin(((scale.x-.9)/3)*PI/2)*3*(sin(cnt/3) +1)/2
-					position += Vector2(amt.x*-2300,amt.y*-640+sin(cnt/3)*7*scale.x/7)
+					amt *= sin(((scale.x-.9)/3.0)*PI/2.0)*3.0*(sin(cnt/3.0) +1.0)/2.0
+					position += Vector2(amt.x*-2300.0,amt.y*-640.0+sin(cnt/3.0)*7.0*scale.x/7.0)
 					scale +=2*amt
 					modulate.a-=amt.x
 					pass
@@ -139,7 +139,7 @@ func resize():
 		i.z_index = 0
 
 func walk(dir):
-	var cnt = 0
+	cnt = 0
 	if dir == Vector2(1,0):#right
 		dt = 3
 		while dt!=0:
