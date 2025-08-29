@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dydnbrikjscok"]
+[gd_scene load_steps=7 format=3 uid="uid://ca8pymvfay1h4"]
 
-[ext_resource type="Script" uid="uid://c5ixdar26oqqn" path="res://hallway.gd" id="1_eparc"]
+[ext_resource type="Script" uid="uid://duvsrhd7nn86m" path="res://hallway.gd" id="1_eparc"]
 [ext_resource type="Texture2D" uid="uid://dmud83jlyt1wr" path="res://Art/Hallways/Wall3/A0.png" id="2_3f1kj"]
 [ext_resource type="Texture2D" uid="uid://c1vm4cm71itbb" path="res://Art/Hallways/Wall3/B0.png" id="3_ogm5h"]
 [ext_resource type="Texture2D" uid="uid://ys3e60n55miq" path="res://Art/Hallways/LBump.png" id="4_2v7yy"]
@@ -16,7 +16,7 @@ scale = Vector2(1.201, 1.201)
 texture = ExtResource("2_3f1kj")
 
 [node name="B" type="Sprite2D" parent="."]
-position = Vector2(576, 326)
+position = Vector2(575, 324)
 scale = Vector2(1.201, 1.201)
 texture = ExtResource("3_ogm5h")
 metadata/_edit_group_ = true

@@ -18,6 +18,7 @@ item = ExtResource("2_aq02k")
 card = ExtResource("3_hhwi1")
 
 [node name="BG" type="Sprite2D" parent="."]
+visible = false
 z_index = -1
 position = Vector2(560, 391)
 texture = ExtResource("4_l04a5")

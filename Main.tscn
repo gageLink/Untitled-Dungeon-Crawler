@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://oqpy0g1aqvfr" path="res://main.gd" id="1_cm0pq"]
 [ext_resource type="PackedScene" path="res://Map.tscn" id="1_glv2v"]
-[ext_resource type="PackedScene" path="res://Hallway.tscn" id="2_fos0i"]
+[ext_resource type="PackedScene" uid="uid://ca8pymvfay1h4" path="res://Hallway.tscn" id="2_fos0i"]
 [ext_resource type="Texture2D" uid="uid://coqciqvigxu7r" path="res://Art/Arms/Up.png" id="2_r0du0"]
 [ext_resource type="Texture2D" uid="uid://dge5rej1syuga" path="res://Art/Arms/Side.png" id="3_cm0pq"]
-[ext_resource type="PackedScene" uid="uid://0nydd6vr7ee6" path="res://arm.tscn" id="6_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://d35cxl14tcv14" path="res://class.tscn" id="7_lgr22"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_cm0pq")
@@ -87,8 +87,7 @@ texture = ExtResource("3_cm0pq")
 visible = false
 polygon = PackedVector2Array(-15, -96.1, -15, -94.8, -22.2, -94, -27.3, -94, -78.1, -80, -84.3, -80, -115, -69.4, -139.1, -69, -141.1, -66, -143.2, -66, -142, -52.8, -142, -50.2, -137, -45.2, -137, -43.4, -128, -41.4, -128, -40.4, -122.2, -39, -107.9, -39, -75.8, -43, -66, -43, -66, -17.6, -58, 1.3, -58, 4, -28.6, 25, -25.2, 25, -30, 31, -31.5, 31, -35.5, 45, -37, 45, -37, 54.5, -26, 73.4, -26, 76, -7.89999, 76, -1, 64.6, -1, 64, 47, 29, 47, 28.2, 84, 12.3, 84, 11.4, 91.3, 9, 95.3, 9, 108.3, 20, 117, 20, 133, 0, 134.5, 0, 140.5, -21, 142, -21, 142, -49.5, 138, -57.5, 138, -61.2, 134, -63.3, 134, -64.5, 106.3, -72, 95.3, -72, 35, -91.5, 35, -92.9)
 
-[node name="Arm" parent="." instance=ExtResource("6_3dxm6")]
-z_index = 2
+[node name="Class" parent="." instance=ExtResource("7_lgr22")]
 
 [connection signal="halls" from="Hallway" to="." method="_on_hallway_halls"]
 [connection signal="review" from="Map" to="." method="_on_map_review"]

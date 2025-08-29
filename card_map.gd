@@ -69,7 +69,7 @@ func shift():
 
 func placeitem(thing):
 	var no = Node.new()
-	Global.addsprite(no,thing,[])
+	glb.addsprite(no,thing,[])
 	add_child(no)
 	match template[0]:
 		"Captcha": #places items at the last available card, or at the end of the array, forcing the first card out
@@ -79,8 +79,8 @@ func placeitem(thing):
 			for n in kids:
 				if n.name.ends_with("Card"):
 					if n.ft.size()<2:
-						var kidos = Global.get_children()
-						Global.get_children()[0].reparent(n.ft[0])
+						var kidos = glb.get_children()
+						glb.get_children()[0].reparent(n.ft[0])
 			if latch == false:#if you cant find an empty card
 				#clear the first card
 				takeitem()
@@ -115,7 +115,7 @@ func setitems():
 							return
 						latch = true
 					else:
-						Global.givekids(n,pn)
+						glb.givekids(n,pn)
 						pn = n
 					
 					

@@ -1,5 +1,5 @@
 extends Node2D
-var ct=0.0;signal halls
+var ct=0.0;signal halls; var dt;var cnt = 0
 func _process(delta: float) -> void:
 	ct+=delta
 	if ct>1: ct=0
@@ -8,6 +8,66 @@ func _process(delta: float) -> void:
 	$C.offset.y = sin(ct *2*PI + 2*PI/3)*3
 	$B/LBump.offset.y = lerp($B/LBump.offset.y,($A.offset.y+$B.offset.y)/2,delta)
 	$B/RBump.offset.y = lerp($B/RBump.offset.y,($C.offset.y+$B.offset.y)/2,delta)
+	#move stuff
+	if dt != 0:
+		match dt:
+			1:
+				$A.move_to_front()
+				if scale.x < 1.5: #move forward
+					cnt +=1
+					var amt = Vector2.ONE*delta
+					amt *= sin(((scale.x-.9)/3)*PI/2)*3*(sin(cnt/3) +1)/2
+					position += Vector2(amt.x*-1150,amt.y*-640+sin(cnt/3)*7*scale.x/7)
+					scale +=2*amt
+					modulate.a-=amt.x
+				elif  scale.x < 3:#start heading left
+					cnt +=1
+					var amt = Vector2.ONE*delta
+					amt *= sin(((scale.x-.9)/3)*PI/2)*3*(sin(cnt/3) +1)/2
+					position += Vector2(amt.x*-0,amt.y*-640+sin(cnt/3)*7*scale.x/7)
+					scale +=2*amt
+					modulate.a-=amt.x
+					pass
+				else: dt = 0
+			2:
+				$B.move_to_front()
+				if scale.x < 3:
+					cnt +=1
+					var amt = Vector2.ONE*delta
+					amt *= sin(((scale.x-.9)/3)*PI/2)*3*(sin(cnt/3) +1)/2
+					position += Vector2(amt.x*-1150,amt.y*-640+sin(cnt/3)*7*scale.x/7)
+					scale +=2*amt
+					modulate.a-=amt.x
+				else: dt = 0
+			3:
+				$C.move_to_front()
+				if scale.x < 1.5: #move forward
+					cnt +=1
+					var amt = Vector2.ONE*delta
+					amt *= sin(((scale.x-.9)/3)*PI/2)*3*(sin(cnt/3) +1)/2
+					position += Vector2(amt.x*-1150,amt.y*-640+sin(cnt/3)*7*scale.x/7)
+					scale +=2*amt
+					modulate.a-=amt.x
+				elif  scale.x < 3:#start heading right
+					cnt +=1
+					var amt = Vector2.ONE*delta
+					amt *= sin(((scale.x-.9)/3)*PI/2)*3*(sin(cnt/3) +1)/2
+					position += Vector2(amt.x*-2300,amt.y*-640+sin(cnt/3)*7*scale.x/7)
+					scale +=2*amt
+					modulate.a-=amt.x
+					pass
+				else: dt = 0
+			4:
+				if modulate.a > .2:
+					modulate.a -= delta/1.5
+					var d = 1
+					for j in [$A,$B,$C]:
+						d*=-1
+						j.rotation+=delta*10*randf()*d
+				else: dt = 0
+				pass
+	
+
 func move(dir):
 	var od = dir
 	if glb.facing != null:#rotate for facing
@@ -55,6 +115,7 @@ func findhall():#halls are stored in a left/straight/right truth table, and refe
 		else:a.append("0")
 		i.texture = ResourceLoader.load("res://Art/Hallways/Wall3/" + i.name + a.back() + ".png")
 		ang -= PI/2#turns to the right
+	resize()
 	if ["111","000","100","011"].find(a[0]+a[1]+a[2]) != -1:
 		$B/RBump.visible = true
 	else:$B/RBump.visible = false
@@ -64,8 +125,12 @@ func findhall():#halls are stored in a left/straight/right truth table, and refe
 	halls.emit(a+["1"])
 
 func resize():
+	dt = 0;cnt = 0
 	var a = [$A,$B,$C];var x = 192.0
 	modulate.a = 1
+	scale = Vector2.ONE
+	position = Vector2.ZERO
+	skew = 0
 	for i in a:
 		i.position = Vector2(x,324.0)
 		x+=384.0
@@ -74,84 +139,25 @@ func resize():
 		i.z_index = 0
 
 func walk(dir):
+	var cnt = 0
 	if dir == Vector2(1,0):#right
-		var p = [$A.position,$C.scale,$B.position,$C.position,Vector2.ZERO]
-		$C.z_index = 1
-		var m = 0
-		for i in 21:
-			modulate.a -= 0.05
-			for j in [$A,$B,$C]:
-				if j.scale.x > 3.5/2:
-					m = 1
-					j.scale.x += (7.2/2-p[4].x)/20
-					if j == $A:
-						$A.position.x += 4*(p[2]-p[3]).x/20
-					if j == $B:
-						$B.position.x += 2.5*(p[2]-p[3]).x/20
-					if j == $C:
-						$C.position.x += (p[2]-p[3]).x/20
-				else:
-					j.scale += (Vector2.ONE*5-p[1])/20
-					p[4] = j.scale
-					if j == $A:
-						$A.position.x += (-1014-p[0].x)/20
-					if j == $C:
-						$C.position.x += (2176-p[3].x)/20
-			if m == 0:
-				await get_tree().create_timer(.2).timeout
-			else:
-				await get_tree().create_timer(.05).timeout
-					
+		dt = 3
+		while dt!=0:
+			await get_tree().create_timer(.1).timeout
+		return
 	if dir == Vector2(-1,0):#left
-		var p = [$A.position,$A.scale,$B.position,$C.position,Vector2.ZERO]
-		$A.z_index = 1
-		var m = 0
-		for i in 21:
-			modulate.a -= 0.05
-			for j in [$A,$B,$C]:
-				if j.scale.x > 3.5/2:
-					m = 1
-					j.scale.x += (7.2/2-p[4].x)/20
-					if j == $A:
-						$A.position.x += (p[2]-p[0]).x/20
-					if j == $B:
-						$B.position.x += 2.5*(p[2]-p[0]).x/20
-					if j == $C:
-						$C.position.x += 4*(p[2]-p[0]).x/20
-				else:
-					j.scale += (Vector2.ONE*10/2-p[1])/20
-					p[4] = j.scale
-					if j == $A:
-						$A.position.x += (-1014-p[0].x)/20
-					if j == $C:
-						$C.position.x += (2176-p[3].x)/20
-			if m == 0:
-				await get_tree().create_timer(.2).timeout
-			else:
-				await get_tree().create_timer(.05).timeout
-					
-		pass
+		dt = 1
+		while dt!=0:
+			await get_tree().create_timer(.1).timeout
+		return
+		
 	if dir == Vector2(0,1):#back
-		var a = [1+randf()*2,1+randf()*2,1+randf()*2]
-		for i in 21:
-			modulate.a -= 0.05
-			await get_tree().create_timer(.02).timeout
-			$A.rotation += a[0]*2*PI/20
-			$B.rotation -= a[1]*2*PI/20
-			$C.rotation += a[2]*2*PI/20
-			
-		pass
+		dt = 4
+		while dt !=0:
+			await get_tree().create_timer(.1).timeout
+		return
 	if dir == Vector2(0,-1):#forward
-		var s = [$B.scale,$A.position,$C.position]
-		$B.z_index=1
-		for i in 41:
-			modulate.a -= 0.025
-			await get_tree().create_timer(.025).timeout
-			for j in [$A,$B,$C]:
-				j.scale += (Vector2.ONE*10/2-s[0])/40
-				if j == $A:
-					$A.position.x += (-1014-s[1].x)/40
-				if j == $C:
-					$C.position.x += (2176-s[2].x)/40
-	pass
-	resize()
+		dt=2
+		while dt != 0:
+			await get_tree().create_timer(0.1).timeout
+		return

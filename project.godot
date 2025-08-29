@@ -11,7 +11,9 @@ config_version=5
 [application]
 
 config/name="Untitled Dungeon Crawler"
+run/main_scene="uid://m8yuw84o11ol"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -20,6 +22,8 @@ glb="*res://global.gd"
 
 [display]
 
+window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
 mouse_cursor/custom_image="uid://cfq2x6x1mmsqk"
 
 [editor]

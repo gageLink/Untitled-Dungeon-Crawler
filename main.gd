@@ -1,8 +1,9 @@
 extends Node2D
 var butt = null
 var BI = false
-#scons platform=linuxbsd tools=no profile=custom.py build=no3d.build lto=full bits=64
-#scons platform=windows tools=no profile=custom.py build=custom.build bits=64
+#scons platform=linuxbsd tools=no profile=custom.py lto=full target=template_release bits=64
+#scons platform=linuxbsd tools=no profile=custom.py lto=full target=template_debug bits=64
+#scons platform=windows tools=no profile=custom.py bits=64
 
 func _on_up_mouse_entered() -> void:
 	$Up/BG.modulate.a = 1

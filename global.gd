@@ -5,7 +5,7 @@ var maxcards = 15 #yeah
 var cards:=[]#mycards
 var counter = 0
 var items: int = 0#yuuuup how many items i got
-var startcards: int = 15
+var startcards: int = 2
 var holding
 var HSCYP = [null,null,null]#position, previous held card, frame counter
 var sz = Vector2(1152,648)

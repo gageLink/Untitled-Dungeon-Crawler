@@ -4,7 +4,7 @@ extends Node2D
 @export var card: PackedScene
 
 func _ready() -> void:
-	for i in range(15):
+	for i in range(3):
 		additem(glb.pickitem())
 
 func _process(_delta: float) -> void:
