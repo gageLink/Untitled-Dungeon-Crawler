@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxs60304vfpwt"]
+
+[ext_resource type="Script" uid="uid://oqpy0g1aqvfr" path="res://dungeon.gd" id="1_noicg"]
+[ext_resource type="PackedScene" uid="uid://ca8pymvfay1h4" path="res://Hallway.tscn" id="2_orq0m"]
+[ext_resource type="PackedScene" uid="uid://cxgkpy22yfnhy" path="res://Map.tscn" id="3_my81p"]
+
+[node name="Dungeon" type="Node2D"]
+script = ExtResource("1_noicg")
+
+[node name="Hallway" parent="." instance=ExtResource("2_orq0m")]
+
+[node name="Map" parent="." instance=ExtResource("3_my81p")]
+
+[connection signal="halls" from="Hallway" to="." method="_on_hallway_halls"]
+[connection signal="move" from="Map" to="." method="_on_map_move"]
+[connection signal="review" from="Map" to="." method="_on_map_review"]

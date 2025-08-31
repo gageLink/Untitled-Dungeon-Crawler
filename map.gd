@@ -3,7 +3,7 @@ var nodes := []
 var roads := []
 var mindist = 20
 @export var mapsquare: PackedScene
-signal review
+signal review;signal move
 var BI:= false#block input
 
 func _input(event: InputEvent) -> void:
@@ -305,3 +305,11 @@ func cleardeadroad(r):
 	var p = glb.readmap(r)
 	glb.map[p.x][p.y] = null
 	roads.erase(r)
+
+
+func _on_buttons_bind() -> void:
+	review.emit()
+
+
+func _on_buttons_move(dir) -> void:
+	move.emit(dir)

@@ -1,23 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://m8yuw84o11ol"]
+[gd_scene load_steps=3 format=3 uid="uid://m8yuw84o11ol"]
 
-[ext_resource type="Script" uid="uid://oqpy0g1aqvfr" path="res://main.gd" id="1_cm0pq"]
-[ext_resource type="PackedScene" uid="uid://cxgkpy22yfnhy" path="res://Map.tscn" id="1_glv2v"]
-[ext_resource type="PackedScene" uid="uid://ca8pymvfay1h4" path="res://Hallway.tscn" id="2_fos0i"]
-[ext_resource type="PackedScene" uid="uid://bl838siokypw" path="res://Buttons.tscn" id="5_fos0i"]
-[ext_resource type="PackedScene" uid="uid://d35cxl14tcv14" path="res://class.tscn" id="7_lgr22"]
+[ext_resource type="PackedScene" uid="uid://cxs60304vfpwt" path="res://dungeon.tscn" id="1_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://0nydd6vr7ee6" path="res://arm.tscn" id="2_r0du0"]
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_cm0pq")
 
-[node name="Hallway" parent="." instance=ExtResource("2_fos0i")]
+[node name="Arm" parent="." instance=ExtResource("2_r0du0")]
+z_index = 3
 
-[node name="Map" parent="." instance=ExtResource("1_glv2v")]
-
-[node name="Buttons" parent="." instance=ExtResource("5_fos0i")]
-
-[node name="Class" parent="." instance=ExtResource("7_lgr22")]
-
-[connection signal="halls" from="Hallway" to="." method="_on_hallway_halls"]
-[connection signal="review" from="Map" to="." method="_on_map_review"]
-[connection signal="bind" from="Buttons" to="." method="_on_buttons_bind"]
-[connection signal="move" from="Buttons" to="." method="_on_buttons_move"]
+[node name="Dungeon" parent="." instance=ExtResource("1_uu6xs")]

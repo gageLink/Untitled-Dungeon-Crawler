@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxgkpy22yfnhy"]
+[gd_scene load_steps=4 format=3 uid="uid://cxgkpy22yfnhy"]
 
 [ext_resource type="Script" uid="uid://db0iykexpbx5q" path="res://map.gd" id="1_gfjgm"]
 [ext_resource type="PackedScene" uid="uid://b5mv781b2y8oj" path="res://MapSquare.tscn" id="2_3vi7k"]
+[ext_resource type="PackedScene" uid="uid://bl838siokypw" path="res://Buttons.tscn" id="3_3h1ab"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_gfjgm")
@@ -9,3 +10,8 @@ mapsquare = ExtResource("2_3vi7k")
 
 [node name="SpotTime" type="Timer" parent="."]
 autostart = true
+
+[node name="Buttons" parent="." instance=ExtResource("3_3h1ab")]
+
+[connection signal="bind" from="Buttons" to="." method="_on_buttons_bind"]
+[connection signal="move" from="Buttons" to="." method="_on_buttons_move"]
