@@ -14,3 +14,8 @@ func _on_map_move(dir) -> void:
 	if not await $Hallway.move(Vector2(dir[0],dir[1])):
 		$Hallway.findhall()
 	$Map/Buttons.BI = false
+
+
+func _on_hallway_down() -> void:
+	$Map.down()
+	pass # Replace with function body.

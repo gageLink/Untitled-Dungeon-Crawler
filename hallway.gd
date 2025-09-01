@@ -1,5 +1,6 @@
 extends Node2D
-var ct=0.0;signal halls; var dt;var cnt = 0
+var ct=0.0;signal halls; var dt;var cnt = 0;signal down
+@export var ladder: PackedScene;var lad
 func _process(delta: float) -> void:
 	ct+=delta
 	if ct>1: ct=0
@@ -113,7 +114,7 @@ func findhall():#halls are stored in a left/straight/right truth table, and refe
 				a.append("1")
 			else:a.append("0")
 		else:a.append("0")
-		i.texture = ResourceLoader.load("res://Art/Hallways/Wall3/" + i.name + a.back() + ".png")
+		i.texture = ResourceLoader.load("res://Art/Hallways/Walls/" + i.name + a.back() + ".png")
 		ang -= PI/2#turns to the right
 	resize()
 	if ["111","000","100","011"].find(a[0]+a[1]+a[2]) != -1:
@@ -122,6 +123,23 @@ func findhall():#halls are stored in a left/straight/right truth table, and refe
 	if ["111","000","001","110"].find(a[0]+a[1]+a[2]) != -1:
 		$B/LBump.visible = true
 	else:$B/LBump.visible = false
+	if lad != null:
+			$B.remove_child(lad)
+			lad.queue_free()
+	match glb.MapIO.find(glb.curr):#ladder finding
+		-1:
+			pass
+		0:#up
+			lad = ladder.instantiate()
+			$B.add_child(lad)
+			lad.name = "ladder"
+		1:#down
+			lad = ladder.instantiate()
+			lad.rotation = PI
+			$B.add_child(lad)
+			lad.name = "ladder"
+			lad.down.connect(_on_ladder_down)
+		
 	halls.emit(a+["1"])
 
 func resize():
@@ -161,3 +179,7 @@ func walk(dir):
 		while dt != 0:
 			await get_tree().create_timer(0.1).timeout
 		return
+
+func _on_ladder_down():
+	down.emit()
+	pass

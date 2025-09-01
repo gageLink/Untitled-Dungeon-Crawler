@@ -11,6 +11,7 @@ script = ExtResource("1_noicg")
 
 [node name="Map" parent="." instance=ExtResource("3_my81p")]
 
+[connection signal="down" from="Hallway" to="." method="_on_hallway_down"]
 [connection signal="halls" from="Hallway" to="." method="_on_hallway_halls"]
 [connection signal="move" from="Map" to="." method="_on_map_move"]
 [connection signal="review" from="Map" to="." method="_on_map_review"]

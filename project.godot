@@ -14,7 +14,7 @@ config/name="Untitled Dungeon Crawler"
 run/main_scene="uid://m8yuw84o11ol"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="uid://ci6y4bx2hiivx"
 
 [autoload]
 

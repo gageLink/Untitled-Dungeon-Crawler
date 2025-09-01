@@ -5,18 +5,33 @@ var mindist = 20
 @export var mapsquare: PackedScene
 signal review;signal move
 var BI:= false#block input
+var PE = Vector2.ZERO #previous end
 
-func _input(event: InputEvent) -> void:
+#func _input(event: InputEvent) -> void:
+	#if not BI:
+		#BI = true
+		#if event.is_action_pressed("click"):
+			#var g = false
+			#while g == false:
+				#reset()
+				#for i in (roads.size()/1.5):
+					#cleardeadroad(findfurthestroad())
+				#g = await grow()
+				#trim()
+			#PE = glb.readmap(nodes[1])
+		#BI = false
+
+func down():
 	if not BI:
 		BI = true
-		if event.is_action_pressed("click"):
-			var g = false
-			while g == false:
-				reset()
-				for i in (roads.size()/1.5):
-					cleardeadroad(findfurthestroad())
-				g = await grow()
-				trim()
+		var g = false
+		while g == false:
+			reset()
+			for i in (roads.size()/1.5):
+				cleardeadroad(findfurthestroad())
+			g = await grow()
+			trim()
+		PE = glb.readmap(nodes[1])
 		BI = false
 
 func _ready() -> void:
@@ -27,6 +42,7 @@ func _ready() -> void:
 			cleardeadroad(findfurthestroad())
 		g = await grow()
 		trim()
+	PE = glb.readmap(nodes[1])
 
 
 func _process(_delta: float) -> void:
@@ -65,7 +81,7 @@ func setinout():
 	c.size = Vector2(8.5,8.5)
 	c.color = Color(1,0,0,1)
 	c.position = Vector2.ONE*8.5/-2
-	s.position = randpos()
+	s.position = Vector2((PE.x)*10+5,(PE.y)*10+5)#randpos()
 	glb.map[((s.position.x+5.0)/10)-1][((s.position.y+5.)/10)-1]=s
 	
 	add_child(s)
@@ -132,7 +148,7 @@ func buildroads():
 	roads += nodes
 	for i in nodes.size():
 		if i < 2:#if in/out
-			var n = nodes.pick_random()
+			var n = nodes.pick_random()#find a random node and connect to it
 			while nodes.find(n) < 2: #prevents the in/out from being chosen
 				n = nodes.pick_random()
 			if nodes[i].position.x > n.position.x:#go left
@@ -147,7 +163,7 @@ func buildroads():
 			else:#go down
 				for k in range (nodes[i].position.y+10,n.position.y+1,10):
 					addroad(Vector2(n.position.x,k))
-			#find a random node and connect to it
+			
 		else:
 			for j in range(i+1,nodes.size()):
 				#go hoz then vert
@@ -260,7 +276,7 @@ func grow():
 func reset():
 	for r in roads:
 		for c in r.get_children():
-			c.queue_free
+			c.queue_free()
 		r.queue_free()
 	glb.map.clear()
 	roads.clear()
@@ -272,12 +288,13 @@ func reset():
 	buildroads() 
 	#facing = null
 	debloom();bloom(nodes[0]);var b = findbloom()
-	glb.facing = glb.readmap(nodes[0]) - glb.readmap(b[0])
+	if b.size()>0: glb.facing = glb.readmap(nodes[0]) - glb.readmap(b[0])
 	glb.curr = roads[0]
 	glb.prev = null
 	glb.curr.occ = true
 	#findhall()
 	glb.curr.visible = true
+	glb.MapIO = [roads[0],roads[1]]
 	#resize()
 	review.emit()
 
