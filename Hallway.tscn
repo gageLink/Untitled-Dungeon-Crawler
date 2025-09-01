@@ -1,16 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://ca8pymvfay1h4"]
+[gd_scene load_steps=9 format=3 uid="uid://ca8pymvfay1h4"]
 
 [ext_resource type="Script" uid="uid://duvsrhd7nn86m" path="res://hallway.gd" id="1_eparc"]
 [ext_resource type="Texture2D" uid="uid://dmud83jlyt1wr" path="res://Art/Hallways/Walls/A0.png" id="2_3f1kj"]
 [ext_resource type="PackedScene" uid="uid://sehg7fot0qfa" path="res://Ladder.tscn" id="2_ogm5h"]
 [ext_resource type="Texture2D" uid="uid://c1vm4cm71itbb" path="res://Art/Hallways/Walls/B0.png" id="3_ogm5h"]
-[ext_resource type="Texture2D" uid="uid://ys3e60n55miq" path="res://Art/Hallways/LBump.png" id="4_2v7yy"]
-[ext_resource type="Texture2D" uid="uid://24av5q3fahe3" path="res://Art/Hallways/RBump.png" id="5_yxphv"]
+[ext_resource type="PackedScene" uid="uid://dgjvpt6ydfb6d" path="res://Door.tscn" id="3_yxphv"]
+[ext_resource type="Texture2D" uid="uid://ys3e60n55miq" path="res://Art/Hallways/Decorations/Bumps/LBump.png" id="6_2v7yy"]
 [ext_resource type="Texture2D" uid="uid://dgok85bfai6yv" path="res://Art/Hallways/Walls/C0.png" id="6_birp0"]
+[ext_resource type="Texture2D" uid="uid://24av5q3fahe3" path="res://Art/Hallways/Decorations/Bumps/RBump.png" id="7_yxphv"]
 
 [node name="Hallway" type="Node2D"]
 script = ExtResource("1_eparc")
 ladder = ExtResource("2_ogm5h")
+Door = ExtResource("3_yxphv")
 
 [node name="A" type="Sprite2D" parent="."]
 position = Vector2(194, 324)
@@ -25,12 +27,12 @@ metadata/_edit_group_ = true
 
 [node name="LBump" type="Sprite2D" parent="B"]
 scale = Vector2(2, 2)
-texture = ExtResource("4_2v7yy")
+texture = ExtResource("6_2v7yy")
 metadata/_edit_group_ = true
 
 [node name="RBump" type="Sprite2D" parent="B"]
 scale = Vector2(2, 2)
-texture = ExtResource("5_yxphv")
+texture = ExtResource("7_yxphv")
 metadata/_edit_group_ = true
 
 [node name="C" type="Sprite2D" parent="."]

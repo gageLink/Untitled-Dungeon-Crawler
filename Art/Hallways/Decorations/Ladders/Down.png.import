@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://26qx1ngkxou4"
-path="res://.godot/imported/C0.png-18fa013af7293665c3cdbc514630c5e8.ctex"
+uid="uid://ccbykffvj2n5g"
+path="res://.godot/imported/Down.png-2b357df8e88d179d12a942f8e1033c0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Hallways/C0.png"
-dest_files=["res://.godot/imported/C0.png-18fa013af7293665c3cdbc514630c5e8.ctex"]
+source_file="res://Art/Hallways/Decorations/Ladders/Down.png"
+dest_files=["res://.godot/imported/Down.png-2b357df8e88d179d12a942f8e1033c0a.ctex"]
 
 [params]
 

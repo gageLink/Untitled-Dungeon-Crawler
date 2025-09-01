@@ -1,13 +1,12 @@
 extends Area2D
 var bloom = 0
 var occ = false
-var ct = 0
+var ct = 0;var shop = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false
 	modulate.a = .6
-	pass # Replace with function body.
 
 
  #Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -89,3 +89,6 @@ func readmap(node):#gets position of node
 	var pos = Vector2.ZERO
 	pos = Vector2((node.position.x-5)/10,(node.position.y-5)/10)
 	return pos
+
+func invface():
+	return facing*-1

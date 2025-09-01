@@ -4,6 +4,10 @@ extends Node2D
 #scons platform=windows tools=no profile=custom.py bits=64
 
 
+func _input(event: InputEvent):
+	if event.is_action_pressed("Spacebar"):
+		glb.curr.shop = glb.facing
+
 func _on_hallway_halls(a) -> void:#tells buttons what to display
 	$Map/Buttons.walking(a)
 

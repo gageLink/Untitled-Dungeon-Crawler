@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2273s3wtpk3k"
-path="res://.godot/imported/001.png-355136451f92d2edcfd1a7188080885e.ctex"
+uid="uid://c5th3a7nwari4"
+path="res://.godot/imported/PShopDoor.png-60a0114a1d8dd56282d191711a95081d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Hallways/001.png"
-dest_files=["res://.godot/imported/001.png-355136451f92d2edcfd1a7188080885e.ctex"]
+source_file="res://Art/Hallways/Decorations/Doors/PShopDoor.png"
+dest_files=["res://.godot/imported/PShopDoor.png-60a0114a1d8dd56282d191711a95081d.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4sxg8736h3d3"
-path="res://.godot/imported/000.png-3fd82e103a142b99710060bbb4c21179.ctex"
+uid="uid://cmgldejx34bge"
+path="res://.godot/imported/Up.png-0fa9021148c319640d832b4aa107b16b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Hallways/000.png"
-dest_files=["res://.godot/imported/000.png-3fd82e103a142b99710060bbb4c21179.ctex"]
+source_file="res://Art/Hallways/Decorations/Ladders/Up.png"
+dest_files=["res://.godot/imported/Up.png-0fa9021148c319640d832b4aa107b16b.ctex"]
 
 [params]
 

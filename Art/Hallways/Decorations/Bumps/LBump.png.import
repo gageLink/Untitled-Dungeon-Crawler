@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgmwg3wimpd0u"
-path="res://.godot/imported/010.png-f4130925661a54bbad7796efc72b0ae8.ctex"
+uid="uid://ys3e60n55miq"
+path="res://.godot/imported/LBump.png-e05e902b442c471398751dc3c73656b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Hallways/010.png"
-dest_files=["res://.godot/imported/010.png-f4130925661a54bbad7796efc72b0ae8.ctex"]
+source_file="res://Art/Hallways/Decorations/Bumps/LBump.png"
+dest_files=["res://.godot/imported/LBump.png-e05e902b442c471398751dc3c73656b6.ctex"]
 
 [params]
 
