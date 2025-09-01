@@ -120,7 +120,7 @@ func findhall():#halls are stored in a left/straight/right truth table, and refe
 		ang -= PI/2#turns to the right
 	resize()
 	if door != null:
-			get_parent().remove_child(door)
+			door.get_parent().remove_child(door)
 			door.queue_free()
 	var z = glb.invface()
 	match glb.curr.shop:
