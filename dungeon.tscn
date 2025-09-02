@@ -14,4 +14,5 @@ script = ExtResource("1_noicg")
 [connection signal="down" from="Hallway" to="." method="_on_hallway_down"]
 [connection signal="halls" from="Hallway" to="." method="_on_hallway_halls"]
 [connection signal="move" from="Map" to="." method="_on_map_move"]
+[connection signal="nf" from="Map" to="." method="_on_map_nf"]
 [connection signal="review" from="Map" to="." method="_on_map_review"]

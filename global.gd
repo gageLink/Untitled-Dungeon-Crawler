@@ -12,6 +12,7 @@ var sz = Vector2(1152,648)
 #map stuff
 var map = [];var facing = Vector2.ZERO;var curr;var prev;var NodeCt = 3;var tilesize = 15;var MapIO = []
 
+
 func addsprite(node, item, ft):
 	if item is String:
 		var Sprite = Sprite2D.new()

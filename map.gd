@@ -3,7 +3,7 @@ var nodes := []
 var roads := []
 var mindist = 20
 @export var mapsquare: PackedScene
-signal review;signal move
+signal review;signal move;signal nf
 var BI:= false#block input
 var PE = Vector2.ZERO #previous end
 
@@ -24,17 +24,13 @@ var PE = Vector2.ZERO #previous end
 func down():
 	if not BI:
 		BI = true
-		var g = false
-		while g == false:
-			reset()
-			for i in (roads.size()/1.5):
-				cleardeadroad(findfurthestroad())
-			g = await grow()
-			trim()
-		PE = glb.readmap(nodes[1])
+		await init()
 		BI = false
 
 func _ready() -> void:
+	await init()
+
+func init():
 	var g = false
 	while g == false:
 		reset()
@@ -43,6 +39,7 @@ func _ready() -> void:
 		g = await grow()
 		trim()
 	PE = glb.readmap(nodes[1])
+	nf.emit()
 
 
 func _process(_delta: float) -> void:

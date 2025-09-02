@@ -19,6 +19,7 @@ config/icon="uid://ci6y4bx2hiivx"
 [autoload]
 
 glb="*res://global.gd"
+dic="*res://Dictionary.gd"
 
 [display]
 

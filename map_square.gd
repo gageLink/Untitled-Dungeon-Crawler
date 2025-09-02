@@ -1,7 +1,7 @@
 extends Area2D
 var bloom = 0
 var occ = false
-var ct = 0;var shop = null
+var ct = 0;var shop = null;var spawned = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

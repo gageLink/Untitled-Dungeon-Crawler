@@ -1,5 +1,5 @@
 extends Node2D
-var ct=0.0;signal halls; var dt;var cnt = 0;signal down
+var ct=0.0;signal halls; var dt;var cnt = 0;signal down;var code
 @export var ladder: PackedScene;var lad;var door = null;@export var Door: PackedScene
 
 
@@ -119,8 +119,10 @@ func findhall():#halls are stored in a left/straight/right truth table, and refe
 		i.texture = ResourceLoader.load("res://Art/Hallways/Walls/" + i.name + a.back() + ".png")
 		ang -= PI/2#turns to the right
 	resize()
+	code = a[0]+a[1]+a[2]
 	if door != null:
-			door.get_parent().remove_child(door)
+			if door.get_parent()!=null:
+				door.get_parent().remove_child(door)
 			door.queue_free()
 	var z = glb.invface()
 	match glb.curr.shop:
@@ -149,8 +151,9 @@ func findhall():#halls are stored in a left/straight/right truth table, and refe
 		$B/LBump.visible = true
 	else:$B/LBump.visible = false
 	if lad != null:
+		if lad.get_parent()!=null:
 			$B.remove_child(lad)
-			lad.queue_free()
+		lad.queue_free()
 	match glb.MapIO.find(glb.curr):#ladder finding
 		-1:
 			pass
