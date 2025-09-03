@@ -7,9 +7,9 @@ func _input(event: InputEvent) -> void:
 		damage([Vector2(1,0),Vector2(0,0)])
 		state = 1
 
-func _ready() -> void:
-	EnemyName = "Bad Man"
-	loadattributes()
+#func _ready() -> void:
+	#EnemyName = "Bad Man"
+	#loadattributes()
 
 func _process(delta: float) -> void:
 	if (MI):
@@ -34,7 +34,7 @@ func _on_mouse_exited() -> void:
 
 
 func loadattributes():
-	attributes = dic.attributes.enemies[EnemyName]
+	attributes = dic.attributes.enemies[EnemyName].duplicate(true)
 	var t= Sprite2D.new()
 	t.texture = ResourceLoader.load("res://Art/Enemies/"+EnemyName+".png")
 	add_child(t)
@@ -53,6 +53,6 @@ func damage(inc):
 			#var t = Label.new()
 			#t.text = nm.front()
 			#add_child(t)
-			expire.emit(nm.front())
+			expire.emit(self,nm.front())
 		nm.pop_front()
 			
