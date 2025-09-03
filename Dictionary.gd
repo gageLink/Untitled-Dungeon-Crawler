@@ -30,7 +30,7 @@ var expirationquotes = [
 	[" removed itself from battle on account of low ",""],
 	[" straight up died from lack of ",""],
 	[" left to call its mom to ask for more ",""],
-	[" basically is feeling a harshed vibe from so little ",", so its gonna head out"],
+	[" basically is feeling a harshed vibe from how little "," there is in here, so its gonna head out"],
 	[" went to the store to pick up more ",""],
 	[" received, like just now, a wicked inheritence and has to leave for that, just that, nothing to do with its ",""],
 	[" tripped on a rock and spilled all its "," on the dungeon floor"],
