@@ -1,6 +1,6 @@
 extends Node2D
 @export var enemy: PackedScene
-var enemies = [];var NewsTO = 3.0;var timer
+var enemies = [];var NewsTO = 3.0;var timer;signal victory
 
 func _ready() -> void:
 	initbattle()
@@ -8,7 +8,7 @@ func _ready() -> void:
 func initbattle():
 	for i in randi_range(1,5):
 		var e = enemy.instantiate()
-		e.EnemyName = dic.EBF[glb.floor].pick_random()
+		e.EnemyName = dic.EBF[glb.flr].pick_random()
 		e.expire.connect(expire)
 		add_child(e)
 		e.loadattributes()
@@ -23,6 +23,8 @@ func expire(enny,COD):
 	remove_child(enny)
 	enemies.erase(enny)
 	enny.queue_free()
+	if enemies.size() == 0:
+		victory.emit()
 	pass
 
 func remlab():

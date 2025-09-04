@@ -2,14 +2,17 @@ extends Node2D
 #scons platform=linuxbsd tools=no profile=custom.py lto=full target=template_release bits=64
 #scons platform=linuxbsd tools=no profile=custom.py lto=full target=template_debug bits=64
 #scons platform=windows tools=no profile=custom.py bits=64
-var spawnables = []
+var spawnables = [];@export var Battle : PackedScene;var battle
+
+
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("Spacebar"):
 		glb.curr.shop = glb.facing
 
 func _on_hallway_halls(a) -> void:#tells buttons what to display
-	$Map/Buttons.walking(a)
+	if $Map.buttons != null:
+		$Map.buttons.walking(a)
 
 func _on_map_review() -> void:#tells hallway to change look
 	$Hallway.findhall();$Hallway.resize()
@@ -64,7 +67,19 @@ func assignspawn(s):
 				glb.curr.modulate = Color(1,0,1)
 				latch = true
 		1:#enemy
+			initbattle()
 			glb.curr.modulate = Color(1,0,0)
 			latch = true
 			pass
 	if latch: spawnables.erase(s)
+
+func initbattle():
+	$Map.buttout()
+	battle = Battle.instantiate()
+	add_child(battle)
+	battle.victory.connect(endbattle)
+
+func endbattle():
+	$Map.buttin()
+	remove_child(battle)
+	battle.queue_free()

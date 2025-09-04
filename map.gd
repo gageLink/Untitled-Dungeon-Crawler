@@ -2,7 +2,7 @@ extends Node2D
 var nodes := []
 var roads := []
 var mindist = 20
-@export var mapsquare: PackedScene
+@export var mapsquare: PackedScene;@export var Buttons : PackedScene;var buttons
 signal review;signal move;signal nf
 var BI:= false#block input
 var PE = Vector2.ZERO #previous end
@@ -29,6 +29,7 @@ func down():
 
 func _ready() -> void:
 	await init()
+	buttin()
 
 func init():
 	var g = false
@@ -79,6 +80,7 @@ func setinout():
 	c.color = Color(1,0,0,1)
 	c.position = Vector2.ONE*8.5/-2
 	s.position = Vector2((PE.x)*10+5,(PE.y)*10+5)#randpos()
+	s.spawned = 1
 	glb.map[((s.position.x+5.0)/10)-1][((s.position.y+5.)/10)-1]=s
 	
 	add_child(s)
@@ -96,6 +98,7 @@ func setinout():
 	c.color = Color(1,0,0,1)
 	c.position = Vector2.ONE*8.5/-2
 	s.position = randpos()
+	s.spawned = 1
 	s.position = fixpos(s.position)
 	glb.map[((s.position.x+5.0)/10)-1][((s.position.y+5.)/10)-1]=s
 	add_child(s)
@@ -320,10 +323,21 @@ func cleardeadroad(r):
 	glb.map[p.x][p.y] = null
 	roads.erase(r)
 
+func buttin():
+	if buttons == null:
+		buttons = Buttons.instantiate()
+		add_child(buttons)
+		buttons.bind.connect(_on_buttons_bind)
+		buttons.move.connect(_on_buttons_move)
+	pass
+func buttout():
+	remove_child(buttons)
+	buttons.queue_free()
+	pass
 
-func _on_buttons_bind() -> void:
+func _on_buttons_bind():
 	review.emit()
 
 
-func _on_buttons_move(dir) -> void:
+func _on_buttons_move(dir):
 	move.emit(dir)
