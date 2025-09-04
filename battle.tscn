@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8hhrejr41ut"]
+
+[ext_resource type="Script" uid="uid://dsrdfimhyevfj" path="res://battle.gd" id="1_oxp8w"]
+[ext_resource type="PackedScene" uid="uid://dcr4q0b07mi6j" path="res://Enemy.tscn" id="2_7sfm4"]
+[ext_resource type="PackedScene" uid="uid://0nydd6vr7ee6" path="res://arm.tscn" id="3_7sfm4"]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_oxp8w")
+enemy = ExtResource("2_7sfm4")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 410.0
+offset_top = 535.0
+offset_right = 685.0
+offset_bottom = 646.0
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Arm" parent="." instance=ExtResource("3_7sfm4")]
+z_index = 2
+
+[node name="NewsTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="NewsTimer" to="." method="remlab"]
